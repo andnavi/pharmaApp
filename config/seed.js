@@ -1,7 +1,7 @@
-const User = require('../app/models/User')
-const faker = require('faker')
+const User = require('../app/models/User');
+const faker = require('faker');
 const shortid = require('shortid');
-const response = require('../app/libs/responseLib')
+const response = require('../app/libs/responseLib');
 
 let USerModel = ({
     userId:shortid.generate(),
@@ -10,9 +10,9 @@ let USerModel = ({
     password:faker.internet.password(),
     email:faker.internet.email(),
     mobileNumber:faker.random.number()
-})
+});
 
 module.exports = {
     USerModel
-}
+};
 
