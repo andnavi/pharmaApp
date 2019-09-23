@@ -15,6 +15,8 @@ const morgan = require('morgan');
 
 app.use(morgan('dev'));
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -35,13 +37,13 @@ const routesPath = './app/routes';
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     next();
 });
 
 //Bootstrap models
 fs.readdirSync(modelsPath).forEach(function (file) {
-  if (~file.indexOf('.js')) require(modelsPath + '/' + file)
+  if (~file.indexOf('.js')) require(modelsPath + '/' + file);
 });
 // end Bootstrap models
 
@@ -49,7 +51,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 fs.readdirSync(routesPath).forEach(function (file) {
   if (~file.indexOf('.js')) {
     let route = require(routesPath + '/' + file);
-    route.setRouter(app)
+    route.setRouter(app);
   }
 });
 // end bootstrap route
@@ -79,7 +81,7 @@ server.on('listening', onListening);
 
 function onError(error) {
   if (error.syscall !== 'listen') {
-    logger.error(error.code + ' not equal listen', 'serverOnErrorHandler', 10)
+    logger.error(error.code + ' not equal listen', 'serverOnErrorHandler', 10);
     throw error;
   }
 
@@ -126,9 +128,9 @@ process.on('unhandledRejection', (reason, p) => {
  */
 mongoose.connection.on('error', function (err) {
   console.log('database connection error');
-  console.log(err)
+  console.log(err);
   logger.error(err,
-    'mongoose connection on error handler', 10)
+    'mongoose connection on error handler', 10);
   //process.exit(1)
 }); // end mongoose connection error
 
@@ -136,11 +138,11 @@ mongoose.connection.on('open', function (err) {
   if (err) {
     console.log("database error");
     console.log(err);
-    logger.error(err, 'mongoose connection open handler', 10)
+    logger.error(err, 'mongoose connection open handler', 10);
   } else {
     console.log("database connection open success");
     logger.info("database connection open",
-      'database connection open handler', 10)
+      'database connection open handler', 10);
   }
   //process.exit(1)
 }); // enr mongoose connection open handler

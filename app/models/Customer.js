@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const shortid = require('shortid');
+const faker = require('faker');
+
 
 const CustomerSchema = mongoose.Schema({
     customerId:{
@@ -10,15 +12,17 @@ const CustomerSchema = mongoose.Schema({
     firstName: {
         type: String,
         trim:true,
-        required:true
+        required:true,
+        default:faker.name.firstName()
       },
       lastName: {
         type: String,
-        default: '',
+        default:faker.name.lastName(),
         trim:true
       },
       address:{
-        type:String
+        type:String,
+        default:faker.address.secondaryAddress()
       },
       email: {
         type: String,
@@ -30,15 +34,18 @@ const CustomerSchema = mongoose.Schema({
           if(!validator.isEmail(value)){
             throw new Error('Pass Valid email id');
           }
-        }
+        },
+        default:faker.internet.email()
       },
       mobileNumber: {
         type: Number,
         trim:true,
-        unique:true
+        unique:true,
+        default:faker.random.number()
       },
       avatar:{
-        type:Buffer
+        type:Buffer,
+        default:faker.image.avatar()
       },
       billIds:[{
           billId:{
