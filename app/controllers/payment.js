@@ -1,4 +1,5 @@
 const Payment = require('../models/payment');
+const check = require('../libs/checkLib');
 
 let create = async (req,res) => {
 
@@ -7,8 +8,9 @@ let create = async (req,res) => {
 
     let data =  await Payment.find({billID}).sort({ _id: -1 }).limit(1);
 
-    let restAmount = data[0].restAmount - req.body.paidAmount;
+    let restAmount = data[0].restAmount  - req.body.paidAmount;
 
+    console.log(restAmount);
     let newPayment = new Payment({
         ...req.body
         ,billID
@@ -25,6 +27,20 @@ let create = async (req,res) => {
 };
 
 
+let getSingleBillPayment = async (req,res) => {
+
+    let id = req.params.id;
+
+    try{
+        let bill = await Payment.find({billID:id});
+        res.send(bill);
+    }catch(e){
+        res.send(e);
+    }
+   
+};
+
 module.exports = {
-    create
+    create,
+    getSingleBillPayment
 };

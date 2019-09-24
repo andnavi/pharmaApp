@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-const shortid = require('shortid');
+
 
 
 const billSchema = mongoose.Schema({
     billId: {
         type: String,
-        require: true,
-        default: shortid.generate()
+        require: true
     },
     totalAmount: {
         type: Number,

@@ -3,8 +3,6 @@ const Customer = require('../models/Customer');
 
 let create = async (req,res) => {
 
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-    console.log('ipAddress',ip);
     let newCustomer = Customer(req.body);
 
     try{
@@ -15,6 +13,31 @@ let create = async (req,res) => {
     }
 };
 
+let getAllCustomers = async (req,res) => {
+
+    try{
+        let result = await Customer.find({});
+        res.send(result);
+    }catch(e){
+        res.send(e);
+    }
+};
+
+
+let getCustomer = async (req,res) => {
+
+    let id = req.params.id;
+    
+    try{
+        let result = await Customer.findById(id);
+        res.send(result);
+    }catch(e){
+        res.send(e);
+    }
+};
+
 module.exports = {
-    create:create
+    create,
+    getAllCustomers,
+    getCustomer
 };

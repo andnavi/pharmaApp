@@ -47,11 +47,7 @@ const CustomerSchema = mongoose.Schema({
         type:Buffer,
         default:faker.image.avatar()
       },
-      billIds:[{
-          billId:{
-              type:String
-          }
-      }]
+      billIds:[]
 },
 {
     timestamps:true

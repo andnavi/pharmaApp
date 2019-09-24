@@ -8,5 +8,9 @@ module.exports.setRouter = (app) => {
     let baseUrl = `${appConfig.apiVersion}/customers`;
 
     app.post(`${baseUrl}/create`,customer.create);
+
+    app.get(`${baseUrl}`,customer.getAllCustomers);
+
+    app.get(`${baseUrl}/:id`,customer.getCustomer);
     
 };
