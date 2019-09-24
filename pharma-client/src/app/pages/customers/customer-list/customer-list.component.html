@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-lg-12">
       <nb-card>
-        <nb-card-header>Customers</nb-card-header>
+        <nb-card-header>Customers
+          <button class="float right" nbButton status="primary" [routerLink]="['/customers/create-customer']" routerLinkActive="router-link-active" >Primary</button>
+        </nb-card-header>
         <nb-card-body>
           <div class="table-responsive">
             <table class="table">

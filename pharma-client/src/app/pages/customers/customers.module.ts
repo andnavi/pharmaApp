@@ -5,7 +5,6 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { NbCardModule } from '@nebular/theme';
 
 import { CustomersRoutingModule, routedComponents } from './customers-routing.module';
-
 @NgModule({
   declarations: [...routedComponents],
   imports: [
