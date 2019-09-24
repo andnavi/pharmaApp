@@ -3,6 +3,45 @@
     <nb-card>
       <nb-card-header>Create Customer</nb-card-header>
       <nb-card-body>
+        <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputFirstName" class="label">First Name</label>
+                <input type="text" nbInput fullWidth id="firstName" placeholder="First Name" formControlName="firstName">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputLastName" class="label">Last Name</label>
+                <input type="text" nbInput fullWidth id="lastName" placeholder="Last Name" formControlName="lastName">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="address" class="label">Address</label>
+                <textarea type="text" nbInput fullWidth id="address" placeholder="Address" formControlName="address"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="email" class="label">Email</label>
+                <input type="email" nbInput fullWidth id="email" placeholder="Email" formControlName="email">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="mobileNumber" class="label">Mobile Number</label>
+                <input type="number" nbInput fullWidth id="mobileNumber" placeholder="Mobile Number" formControlName="mobileNumber">
+              </div>
+            </div>
+          </div>
+          <button type="submit" nbButton>Submit</button>
+        </form>
       </nb-card-body>
     </nb-card>
   </div>
