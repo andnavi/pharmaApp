@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Custom Components
 import { CustomersComponent } from './customers.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: 'customer-list',
         component: CustomerListComponent
+      },
+      {
+        path: 'create-customer',
+        component: CreateCustomerComponent
       }
     ]
   }
@@ -26,5 +31,6 @@ export class CustomersRoutingModule { }
 
 export const routedComponents = [
   CustomersComponent,
-  CustomerListComponent
+  CustomerListComponent,
+  CreateCustomerComponent
 ];

@@ -17,7 +17,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
         request = request.clone({
             url: `${this.baseUrl}${request.url}`,
             setHeaders: {
-                Authorization: ``
+                Authorization: ''
             }
         });
         return next.handle(request);
