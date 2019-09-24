@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 /** Module Dependencies **/
 
-const validator = require('validator')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
@@ -33,7 +33,7 @@ let userSchema = new Schema({
     required:true,
     validate(value){
       if(value.toLowerCase().includes('password')){
-        throw new Error('Password conanot contains password string')
+        throw new Error('Password conanot contains password string');
       }
     }
   },
@@ -45,7 +45,7 @@ let userSchema = new Schema({
     lowercase:true,
     validate(value){
       if(!validator.isEmail(value)){
-        throw new Error('Pass Valid email id')
+        throw new Error('Pass Valid email id');
       }
     }
   },
@@ -67,7 +67,7 @@ let userSchema = new Schema({
 {
   timestamps:true
 }
-)
+);
 
 // CustomerSchema.virtual('Bill',{
 //   ref:'Bill',
@@ -77,51 +77,51 @@ let userSchema = new Schema({
 
 
 userSchema.methods.toJSON = function(){
-  const findUser = this
+  const findUser = this;
 
-  const userObject = findUser.toObject()
+  const userObject = findUser.toObject();
   
-  delete userObject.password
-  delete userObject.tokens
+  delete userObject.password;
+  delete userObject.tokens;
 
-  return userObject
-}
+  return userObject;
+};
 
 userSchema.methods.generateAuthToken = async function(){
-  let newUser = this
+  let newUser = this;
 
-  let token = jwt.sign({_id:newUser._id.toString()},process.env.JWT_SECRET)
-  newUser.tokens = newUser.tokens.concat({token})
-  await newUser.save()
-  return token
+  let token = jwt.sign({_id:newUser._id.toString()},process.env.JWT_SECRET);
+  newUser.tokens = newUser.tokens.concat({token});
+  await newUser.save();
+  return token;
 
-}
+};
 
 userSchema.statics.findByCredentials = async (email,password) => {
 
-  let foundUSer = await User.findOne({email})
+  let foundUSer = await User.findOne({email});
   if(!foundUSer){
-    throw new Error('Unable to login')
+    throw new Error('Unable to login');
   }
-  let isMatch = await bcrypt.compare(password,foundUSer.password)
+  let isMatch = await bcrypt.compare(password,foundUSer.password);
   if(!isMatch){
-    throw new Error('Unable to login')
+    throw new Error('Unable to login');
   }
 
-  return foundUSer
+  return foundUSer;
 
-}
+};
 
 userSchema.pre('save', async function(next){
-    let user = this
+    let user = this;
 
     if(user.isModified('password')){
-        user.password = await bcrypt.hash(user.password,8)
+        user.password = await bcrypt.hash(user.password,8);
     }
 
-    next()
-})
+    next();
+});
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;

@@ -1,11 +1,11 @@
 let appConfig = {};
 
-appConfig.port = process.env.PORT;
+appConfig.port = process.env.PORT || 5000;
 appConfig.allowedCorsOrigin = "*";
 appConfig.env = "dev";
 appConfig.db = {
     uri: 'mongodb://127.0.0.1:27017/pharmaApp'
-  }
+  };
 appConfig.apiVersion = '/api/v1';
   
 
