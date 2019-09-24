@@ -11,7 +11,9 @@ export class CustomersService {
   ) { }
 
   getCustomers() {
-    return this.http.get(`v1/customers/create`);
+    let apiResponse = this.http.get(`http://localhost:5000/api/v1/customers`);
+    console.log(apiResponse)
+    return apiResponse
   }
 
   addCustomers(customerObject: any) {
