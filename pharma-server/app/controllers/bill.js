@@ -43,7 +43,48 @@ let getBillsByCustomer = async (req,res) => {
 
 };
 
+
+let getBill = async (req,res) => {
+
+    let id = req.params.id;
+
+    try{
+        let result = await Bill.findById(id);
+        res.send(result);
+    }catch(e){
+        res.send(e);
+    }
+};
+
+
+let updateBill =  async (req,res) => {
+
+    let id = req.params.id;
+
+    try{
+        let updatedBillData =  await Bill.findByIdAndUpdate(id,req.body,{new:true});
+        res.send(updatedBillData);
+    }catch(e){
+        res.send(e);
+    }
+};
+
+let deleteBill = async (req,res) => {
+    
+    let id = req.params.id;
+
+    try{
+        let result =  await Bill.findByIdAndDelete(id);
+        res.send(result);
+    }catch(e){
+        res.send(e);
+    }
+};
+
 module.exports = {
     create,
-    getBillsByCustomer
+    getBillsByCustomer,
+    getBill,
+    updateBill,
+    deleteBill
 };

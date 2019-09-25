@@ -12,5 +12,9 @@ module.exports.setRouter = (app) => {
     app.get(`${baseUrl}`,customer.getAllCustomers);
 
     app.get(`${baseUrl}/:id`,customer.getCustomer);
+
+    app.patch(`${baseUrl}/:id`,customer.updateCustomer);
+
+    app.delete(`${baseUrl}/:id`,customer.deleteCustomer);
     
 };

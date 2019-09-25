@@ -36,8 +36,36 @@ let getCustomer = async (req,res) => {
     }
 };
 
+
+let updateCustomer =  async (req,res) => {
+
+    let id = req.params.id;
+
+    try{
+        let updatedCustomerData =  await Customer.findByIdAndUpdate(id,req.body,{new:true});
+        res.send(updatedCustomerData);
+    }catch(e){
+        res.send(e);
+    }
+};
+
+let deleteCustomer = async (req,res) => {
+    
+    let id = req.params.id;
+
+    try{
+        let result =  await Customer.findByIdAndDelete(id);
+        res.send(result);
+    }catch(e){
+        res.send(e);
+    }
+};
+
 module.exports = {
     create,
     getAllCustomers,
-    getCustomer
+    getCustomer,
+    updateCustomer,
+    deleteCustomer
 };
+
