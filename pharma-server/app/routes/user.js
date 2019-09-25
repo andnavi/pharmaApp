@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require("./../../app/controllers/userController");
-const appConfig = require("./../../config/appConfig")
-const auth = require("../middlewares/auth")
+const appConfig = require("./../../config/appConfig");
+const auth = require("../middlewares/auth");
 
 module.exports.setRouter = (app) => {
 
@@ -71,4 +71,4 @@ module.exports.setRouter = (app) => {
 
     app.patch(`${baseUrl}/profile`, auth, userController.updateProfile);
 
-}
+};

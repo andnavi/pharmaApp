@@ -5,6 +5,7 @@ const response = require('../libs/responseLib');
 const logger = require('../libs/loggerLib');
 const validateInput = require('../libs/paramsValidationLib');
 const check = require('../libs/checkLib');
+const email = require('../email/mail');
 
 /* Models */
 const User = require('../models/User');
@@ -18,9 +19,12 @@ let signUpFunction = async (req, res) => {
     try{
         let token = await newUser.generateAuthToken();
         await newUser.save();
+        await email.sendMail(newUser.email,newUser.firstName);
         logger.info('You are successfully registered','userController: signup',1);
         let apiResponse = response.generate(false,'You are successfully registered',200,{newUser,token});
         res.send(apiResponse);
+        
+
     }
     catch(e){
         let apiResponse = response.generate(true,e,500,null);
@@ -76,12 +80,10 @@ let getProfile = async (req,res) => {
 let updateProfile = async (req,res) => {
 
     let loggedInUser = req.loggedInUser;
+
     try {
-        let user = User.findOne({_id:loggedInUser._id});
-        console.log(user);
-        // let updateUser = User.findByIdAndUpdate({_id:loggedInUser._id}, req.body)
-        // await updateUser.save()
-        res.send(user);
+        let result = await User.findByIdAndUpdate(loggedInUser._id,req.body,{new:true});
+        res.send(result);
 
     }catch(e){
         res.status('500').send(e);
