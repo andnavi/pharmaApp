@@ -11,7 +11,7 @@ export class CustomersService {
   ) { }
 
   getCustomers() {
-    return this.http.get(`v1/customers/create`);
+    return this.http.get(`v1/customers`);
   }
 
   addCustomers(customerObject: any) {
