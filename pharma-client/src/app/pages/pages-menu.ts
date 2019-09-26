@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/customers/customer-list'
   },
   {
+    title: 'Customer Bills',
+    icon: 'home-outline',
+    link: '/pages/customer-bills/customer-bills-list'
+  },
+  {
     title: 'FEATURES',
     group: true,
   },

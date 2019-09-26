@@ -8,6 +8,8 @@ import { CustomersService } from '../../../@core/services/customers.service';
 })
 export class CustomerListComponent implements OnInit {
 
+  customersDataArray: any = [];
+
   constructor(
     private customersService: CustomersService
   ) { }
@@ -17,7 +19,13 @@ export class CustomerListComponent implements OnInit {
   }
 
   getCustomers() {
-   
+    this.customersService.getCustomers()
+      .subscribe(data => {
+        console.log(data);
+        this.customersDataArray = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
 }

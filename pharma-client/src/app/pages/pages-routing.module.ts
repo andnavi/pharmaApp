@@ -17,6 +17,10 @@ const routes: Routes = [{
       loadChildren: './customers/customers.module#CustomersModule'
     },
     {
+      path: 'customer-bills',
+      loadChildren: './customer-bills/customer-bills.module#CustomerBillsModule'
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

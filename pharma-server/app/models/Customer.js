@@ -46,8 +46,7 @@ const CustomerSchema = mongoose.Schema({
       avatar:{
         type:Buffer,
         default:faker.image.avatar()
-      },
-      billIds:[]
+      }
 },
 {
     timestamps:true

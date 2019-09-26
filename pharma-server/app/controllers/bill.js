@@ -4,7 +4,7 @@ const shortid = require('shortid');
 
 let create = async (req,res) => {
 
-    let inputCustomerId = "5d8611391143ef1e7d631f30";
+    let inputCustomerId = "5d8a658400bb0675c768fec4";
 
     let newBill = new Bill({
         ...req.body
@@ -15,14 +15,6 @@ let create = async (req,res) => {
     try{
         await newBill.save();
         
-        // Save billId in Customer Model
-
-        let customer = await Customer.findById({_id:inputCustomerId});
-
-        customer.billIds = customer.billIds.concat(newBill.billId);
-
-        await customer.save();
-
         res.send(newBill);
 
     }catch(e){
