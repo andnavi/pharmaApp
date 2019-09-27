@@ -17,4 +17,8 @@ export class CustomersService {
   addCustomers(customerObject: any) {
     return this.http.post(`v1/customers/create`, customerObject);
   }
+
+  getCustomerBills(customerId: string) {
+    return this.http.get(`v1/bill/${customerId}`);
+  }
 }

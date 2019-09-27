@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CustomersComponent } from './customers.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
+import { CustomerBillComponent } from './customer-bill/customer-bill.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'create-customer',
         component: CreateCustomerComponent
+      },
+      {
+        path: 'customer-bill/:customerId',
+        component: CustomerBillComponent
       }
     ]
   }
@@ -32,5 +37,6 @@ export class CustomersRoutingModule { }
 export const routedComponents = [
   CustomersComponent,
   CustomerListComponent,
-  CreateCustomerComponent
+  CreateCustomerComponent,
+  CustomerBillComponent
 ];

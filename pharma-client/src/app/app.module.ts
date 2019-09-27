@@ -21,6 +21,7 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { HttpTokenInterceptor } from './@core/interceptors/http.token.interceptor';
+import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,18 @@ import { HttpTokenInterceptor } from './@core/interceptors/http.token.intercepto
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+          baseEndpoint: '',
+          login: {
+            endpoint: 'user-auth/login',
+            method: 'post',
+          }
+        })
+      ]
+    })
   ],
   providers: [
     {

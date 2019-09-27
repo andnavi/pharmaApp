@@ -41,7 +41,7 @@ let sendMail = (email,name) => {
             from: 'awzing.help@gmail.com', // sender address
             to: emailId, // list of receivers
             subject: "Thank You", // Subject line
-            html: '<b>Hi <b>'+ name + " " + 'Thanks for contactig us, we will contact you soon' 
+            html: '<b>Hi <b>'+ name + " " + 'Thanks for contacting us, we will contact you soon' 
         };
         // send mail with defined transport object
         let info = await transporter.sendMail(mailOptionsOwner);
