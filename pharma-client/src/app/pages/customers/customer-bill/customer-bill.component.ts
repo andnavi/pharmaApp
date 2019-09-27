@@ -11,6 +11,7 @@ export class CustomerBillComponent implements OnInit {
 
   customerBillArray: any = [];
   customerId: string;
+  customerName: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -19,6 +20,7 @@ export class CustomerBillComponent implements OnInit {
 
   ngOnInit() {
     this.customerId = this.activatedRoute.snapshot.paramMap.get('customerId');
+    this.customersService.currentCustomer.subscribe(customer => this.customerName = customer);
     this.getCustomerBills();
   }
 

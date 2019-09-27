@@ -6,6 +6,7 @@ import { CustomersComponent } from './customers.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { CustomerBillComponent } from './customer-bill/customer-bill.component';
+import { CustomerBillHistoryComponent } from './customer-bill-history/customer-bill-history.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'customer-bill/:customerId',
         component: CustomerBillComponent
+      },
+      {
+        path: 'customer-bill-history/:billId',
+        component: CustomerBillHistoryComponent
       }
     ]
   }
@@ -38,5 +43,6 @@ export const routedComponents = [
   CustomersComponent,
   CustomerListComponent,
   CreateCustomerComponent,
-  CustomerBillComponent
+  CustomerBillComponent,
+  CustomerBillHistoryComponent
 ];

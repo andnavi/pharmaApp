@@ -17,7 +17,7 @@
               <tbody>
                 <tr *ngFor="let customer of customersDataArray; let i = index">
                   <td>{{ i + 1}}</td>
-                  <td><a [routerLink]="['/pages/customers/customer-bill', customer._id]" routerLinkActive="router-link-active" >{{ customer.firstName + ' ' + customer.lastName }}</a></td>
+                  <td><a (click)="selectCustomer(customer)" routerLinkActive="router-link-active" >{{ customer.firstName + ' ' + customer.lastName }}</a></td>
                   <td>{{ customer.email }}</td>
                   <td>{{ customer.mobileNumber }}</td>
                   <td></td>
