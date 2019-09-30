@@ -12,6 +12,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile Number</th>
+                <th>Bills</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -20,7 +21,7 @@
                   <td><a (click)="selectCustomer(customer)" routerLinkActive="router-link-active" >{{ customer.firstName + ' ' + customer.lastName }}</a></td>
                   <td>{{ customer.email }}</td>
                   <td>{{ customer.mobileNumber }}</td>
-                  <td></td>
+                  <td>{{ customer.billIds.length}}</td>
                 </tr>
                 <tr *ngIf="customersDataArray.length === 0">
                   <td colspan="5">No Data Available</td>

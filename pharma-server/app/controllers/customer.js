@@ -15,8 +15,11 @@ let create = async (req,res) => {
 
 let getAllCustomers = async (req,res) => {
 
+    skipValue = +req.query.skip || 0;
+    limit = +req.query.limit || 0; 
+
     try{
-        let result = await Customer.find({});
+        let result = await Customer.find({}).limit(limit).skip(skipValue);
         res.send(result);
     }catch(e){
         res.send(e);

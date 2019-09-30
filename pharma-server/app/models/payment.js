@@ -8,6 +8,10 @@ const paymentSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    paymentId:{
+        type:String,
+        required:true
+    },
     billID:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,

@@ -15,7 +15,8 @@ const billSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:'Customer'
-    }
+    },
+    paymentIds:[]
 },
     {
         timestamps: true

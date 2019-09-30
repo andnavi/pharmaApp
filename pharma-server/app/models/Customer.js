@@ -3,7 +3,6 @@ const validator = require('validator');
 const shortid = require('shortid');
 const faker = require('faker');
 
-
 const CustomerSchema = mongoose.Schema({
     customerId:{
       type:String,
@@ -21,8 +20,16 @@ const CustomerSchema = mongoose.Schema({
         trim:true
       },
       address:{
-        type:String,
-        default:faker.address.secondaryAddress()
+        street:{
+        },
+        place:{
+          type:String,
+          required:true
+        },
+        pincode:{
+          type:Number,
+          required:true
+        }
       },
       email: {
         type: String,
@@ -43,6 +50,7 @@ const CustomerSchema = mongoose.Schema({
         unique:true,
         default:faker.random.number()
       },
+      billIds:[],
       avatar:{
         type:Buffer,
         default:faker.image.avatar()

@@ -9,6 +9,8 @@ module.exports.setRouter = (app) => {
 
     app.post(`${baseUrl}/create`,bill.create);
 
+    app.get(`${baseUrl}`,bill.getAllBills);
+
     app.get(`${baseUrl}/:customerId`,bill.getBillsByCustomer);
 
     app.get(`${baseUrl}/:id`,bill.getBill);
