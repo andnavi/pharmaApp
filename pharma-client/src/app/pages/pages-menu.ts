@@ -18,6 +18,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/customer-bills/customer-bills-list'
   },
   {
+    title: 'Products',
+    icon: '',
+    link: '/pages/products/product-list'
+  },
+  {
     title: 'FEATURES',
     group: true,
   },
