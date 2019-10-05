@@ -4,7 +4,6 @@ const check = require('../libs/checkLib');
 const shortId = require('shortid');
 
 let create = async (req,res) => {
-
     let billID = req.params.id;
    
     let result = await Bill.findById(billID);

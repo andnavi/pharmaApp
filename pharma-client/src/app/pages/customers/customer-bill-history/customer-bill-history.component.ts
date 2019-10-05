@@ -31,4 +31,17 @@ export class CustomerBillHistoryComponent implements OnInit {
         });
   }
 
+  addAmount(paidAmount){
+
+    let paymentObj = ({
+        billId:this.billId,
+        paidAmount:paidAmount
+    })
+    this.customersService.addPayment(paymentObj)
+    .subscribe(data => {
+      this.customerBillHistoryArray.push(data.newPayment)
+    }, error => {
+      console.log(error)
+    })
+  }
 }

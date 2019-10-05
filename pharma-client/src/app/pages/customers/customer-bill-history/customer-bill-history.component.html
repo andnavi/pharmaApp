@@ -21,6 +21,12 @@
                   <td>{{ bill.billAmount }}</td>
                   <td>{{ bill.createdAt | date: 'medium' }}</td>
                 </tr>
+                <tr>
+                  <div style="display: inline-block">
+                    Paid Amount: <input type="number" name="paidAmount" #paidAmount>
+                    <button (click)="addAmount(paidAmount.value)">Add</button>
+                  </div>
+                </tr>
                 <tr *ngIf="customerBillHistoryArray.length === 0">
                     <td colspan="5">No Data Available</td>
                 </tr>

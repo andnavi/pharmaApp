@@ -34,5 +34,10 @@ export class CustomersService {
     return this.http.get(`v1/payment/${billId}`);
   }
 
+  addPayment(paymentObj){
+    console.log('called',paymentObj.paidAmount)
+    return this.http.post(`v1/payment/${paymentObj.billId}`,paymentObj)
+  }
+
 
 }

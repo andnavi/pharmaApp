@@ -15,7 +15,8 @@ const productSchema = mongoose.Schema({
     batchNo:{
         type:String,
         require:true,
-        trim:true
+        trim:true,
+        unique:true
     },
     MRP:{
         type:Number,

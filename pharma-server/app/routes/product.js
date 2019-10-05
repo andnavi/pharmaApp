@@ -1,4 +1,3 @@
-
 const appConfig = require("./../../config/appConfig");
 const productController = require('../controllers/product');
 
