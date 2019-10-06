@@ -21,13 +21,14 @@ const CustomerSchema = mongoose.Schema({
       },
       address:{
         street:{
+          type:String
         },
         place:{
           type:String,
           required:true
         },
         pincode:{
-          type:Number,
+          type:String,
           required:true
         }
       },

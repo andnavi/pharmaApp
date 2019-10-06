@@ -32,7 +32,7 @@ export class CustomerBillHistoryComponent implements OnInit {
   }
 
   addAmount(paidAmount){
-
+  
     let paymentObj = ({
         billId:this.billId,
         paidAmount:paidAmount
